@@ -26,7 +26,7 @@ public class CustomAdapterListViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_list_view);
         AnhXa();
         subjectAdapter = new SubjectAdapter(getApplicationContext(), R.layout.row_subject, arrSubject);
         lstSubject.setAdapter(subjectAdapter);

@@ -17,6 +17,9 @@
             android:exported="false" />
         <activity
             android:name=".CustomAdapterListViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomAdapterGridViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
