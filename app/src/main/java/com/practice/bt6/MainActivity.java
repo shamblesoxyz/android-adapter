@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
     EditText edtNewSubject;
     Button btnAdd;
     Button btnUpdate;
-    int index = -1;
     Button btnDelete;
+    int index = -1;
     ListView lstSubject;
     ArrayList<String> arrSubject;
     ArrayAdapter arrAdapter;
@@ -86,6 +86,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 arrSubject.set(index, edtNewSubject.getText().toString());
+                edtNewSubject.setText(null);
+                arrAdapter.notifyDataSetChanged();
+            }
+        });
+
+        //Delete exist subject
+        btnDelete = (Button) findViewById(R.id.button_delete);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrSubject.remove(index);
                 edtNewSubject.setText(null);
                 arrAdapter.notifyDataSetChanged();
             }
