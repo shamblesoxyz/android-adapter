@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edtNewSubject;
     Button btnAdd;
     Button btnUpdate;
+    int index = -1;
     Button btnDelete;
     ListView lstSubject;
     ArrayList<String> arrSubject;
@@ -40,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
         lstSubject.setAdapter(arrAdapter);
 
         //Show index of item is being clicked
-        lstSubject.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*lstSubject.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(MainActivity.this, "" + i, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         //Show list item is being long clicked
         lstSubject.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -55,5 +56,40 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        //Add new subject
+        edtNewSubject = (EditText) findViewById(R.id.edittext_new_subject);
+        btnAdd = (Button) findViewById(R.id.button_add);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrSubject.add(edtNewSubject.getText().toString());
+                edtNewSubject.setText(null);
+                arrAdapter.notifyDataSetChanged();
+            }
+        });
+
+        //Show exist subject in EditText
+        lstSubject.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                edtNewSubject.setText(arrSubject.get(i));
+                edtNewSubject.requestFocus();
+                edtNewSubject.setSelection(edtNewSubject.length());
+                index = i;
+            }
+        });
+
+        //Update exist subject
+        btnUpdate = (Button) findViewById(R.id.button_update);
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrSubject.set(index, edtNewSubject.getText().toString());
+                edtNewSubject.setText(null);
+                arrAdapter.notifyDataSetChanged();
+            }
+        });
+
     }
 }
