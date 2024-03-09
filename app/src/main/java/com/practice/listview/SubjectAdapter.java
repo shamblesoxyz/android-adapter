@@ -71,10 +71,11 @@ public class SubjectAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder = new ViewHolder();
+        ViewHolder viewHolder;
         if (view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
+            viewHolder = new ViewHolder();
             viewHolder.txtName = (TextView) view.findViewById(R.id.textview_subject_name);
             viewHolder.txtDesc = (TextView) view.findViewById(R.id.textview_subject_desc);
             viewHolder.imvPicture = (ImageView) view.findViewById(R.id.imageview_subject_picture);
